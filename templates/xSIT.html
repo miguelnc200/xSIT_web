@@ -436,10 +436,10 @@
 
                 // Prepare data for backend
                 const data = {
-                    pos_balon: [(canvasHeight/scaleY) - ballPosition.y, ballPosition.x],
+                    pos_balon: [ ballPosition.y,(canvasHeight/scaleY) - ballPosition.x],
                     velocidad_balon: shotSpeed,
-                    portero: [(canvasHeight/scaleY) - goalkeeperPosition.y, goalkeeperPosition.x],
-                    jugadores: playerPositions.map(p => [(canvasHeight/scaleY) - p.y, p.x])
+                    portero: [goalkeeperPosition.y, (canvasHeight/scaleY) - goalkeeperPosition.x],
+                    jugadores: playerPositions.map(p => [ p.y, (canvasHeight/scaleY) - p.x])
                 };
 
                 // Send request to backend
