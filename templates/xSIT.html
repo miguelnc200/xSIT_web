@@ -342,8 +342,8 @@
         const shotSpeedInput = document.getElementById('shotSpeed');
 
         // Field dimensions in meters
-        const fieldWidth = 120;  // meters
-        const fieldHeight = 75;  // meters
+        const fieldHeight = 40;  // meters
+        const fieldWidth = 75;  // meters
 
         // Canvas dimensions in pixels
         const canvasWidth = canvas.width;
@@ -390,17 +390,17 @@
 
             switch(state) {
                 case 'ball':
-                    ballPosition = { x: fieldX, y: fieldY };
+                    ballPosition = { x: fieldY, y: fieldX };
                     state = 'goalkeeper';
                     break;
                 case 'goalkeeper':
-                    goalkeeperPosition = { x: fieldX, y: fieldY };
+                    goalkeeperPosition = { x: fieldY, y: fieldX };
                     state = 'players';
                     playerPositions = [];
                     break;
                 case 'players':
                     if (playerPositions.length < numPlayers) {
-                        playerPositions.push({ x: fieldX, y: fieldY });
+                        playerPositions.push({ x: fieldY, y: fieldX });
                         if (playerPositions.length === numPlayers) {
                             state = 'ready';
                         }
@@ -507,59 +507,33 @@
             ctx.lineWidth = 2;
             ctx.strokeRect(0, 0, canvasWidth, canvasHeight);
 
-            // Center line
-            ctx.beginPath();
-            ctx.moveTo(canvasWidth/2, 0);
-            ctx.lineTo(canvasWidth/2, canvasHeight);
-            ctx.stroke();
-            
-            // Center circle
-            ctx.beginPath();
-            ctx.arc(canvasWidth/2, canvasHeight/2, 70, 0, Math.PI * 2);
-            ctx.stroke();
             
             // Goal areas
-            ctx.strokeRect(0, canvasHeight/2 - 100, 100, 200);
-            ctx.strokeRect(canvasWidth - 100, canvasHeight/2 - 100, 100, 200);
+            ctx.strokeRect(canvasWidth/2-215,0 , 430,206);
             
             // Goals
             ctx.fillStyle = 'white';
-            ctx.fillRect(0, canvasHeight/2 - 30, 5, 60);
-            ctx.fillRect(canvasWidth - 5, canvasHeight/2 - 30, 5, 60);
+            ctx.fillRect(canvasWidth/2-39,0 ,78 ,5 );
             
             // Penalty areas
-            ctx.strokeRect(0, canvasHeight/2 - 50, 40, 100);
-            ctx.strokeRect(canvasWidth - 40, canvasHeight/2 - 50, 40, 100);
+            ctx.strokeRect(canvasWidth/2- 97.73,0, 195, 68.75);
 
             // Penalty spot
             ctx.beginPath();
-            ctx.arc(canvasWidth/10, canvasHeight/2, 2, 0, Math.PI * 2);
+            ctx.arc(canvasWidth/2, 137.5, 2, 0, Math.PI * 2);
             ctx.fillStyle = 'white';
             ctx.fill();
-
-            // Penalty spot
-            ctx.beginPath();
-            ctx.arc(canvasWidth - canvasWidth/10, canvasHeight/2, 2, 0, Math.PI * 2);
-            ctx.fillStyle = 'white';
-            ctx.fill();
-            
-            // Center spot
-            ctx.beginPath();
-            ctx.arc(canvasWidth/2, canvasHeight/2, 5, 0, Math.PI * 2);
-            ctx.fillStyle = 'white';
-            ctx.fill();
-            
             // Draw elements if they exist
             if (ballPosition) {
-                drawBall(ballPosition.x, ballPosition.y);
+                drawBall(ballPosition.y, ballPosition.x);
             }
             
             if (goalkeeperPosition) {
-                drawGoalkeeper(goalkeeperPosition.x, goalkeeperPosition.y);
+                drawGoalkeeper(goalkeeperPosition.y, goalkeeperPosition.x);
             }
             
             playerPositions.forEach(player => {
-                drawPlayer(player.x, player.y);
+                drawPlayer(player.y, player.x);
             });
             
             // Draw effective area if ball exists
@@ -629,18 +603,18 @@
 
         function drawEffectiveArea() {
             // Convert meters to pixels
-            const ballCanvasX = ballPosition.x * scaleX;
-            const ballCanvasY = canvasHeight - (ballPosition.y * scaleY);
+            const ballCanvasX = ballPosition.y * scaleX;
+            const ballCanvasY = canvasHeight - (ballPosition.x * scaleY);
 
             // Draw shot cone
-            const goalX = ballPosition.x > 60 ? canvasWidth : 0;
-            const goalY1 = canvasHeight - (32 * scaleY);
-            const goalY2 = canvasHeight - (43 * scaleY);
+            const goalX =  0;
+            const goalY1 = canvasWidth/2 - 39;
+            const goalY2 = canvasWidth/2 + 39;
 
             ctx.beginPath();
             ctx.moveTo(ballCanvasX, ballCanvasY);
-            ctx.lineTo(goalX, goalY1);
-            ctx.lineTo(goalX, goalY2);
+            ctx.lineTo(goalY1, goalX);
+            ctx.lineTo(goalY2, goalX);
             ctx.closePath();
 
             ctx.fillStyle = 'rgba(255, 0, 0, 0.2)';
