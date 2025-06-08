@@ -439,7 +439,12 @@
                     pos_balon: [ (canvasHeight/scaleY) - ballPosition.x, (canvasWidth/scaleX) - ballPosition.y],
                     velocidad_balon: shotSpeed,
                     portero: [ (canvasHeight/scaleY) - goalkeeperPosition.x , (canvasWidth/scaleX) - goalkeeperPosition.y],
-                    jugadores: playerPositions.map(p => [(canvasHeight/scaleY) - p.x, (canvasWidth/scaleX) - p.y])
+                    if (len(jugadores) > 0{
+                        jugadores: playerPositions.map(p => [(canvasHeight/scaleY) - p.x, (canvasWidth/scaleX) - p.y]),
+                    }
+                    else {
+                    jugadores: [ (canvasHeight/scaleY) - ballPosition.x, (canvasWidth/scaleX) - ballPosition.y],
+                }
                 };
 
                 // Send request to backend
