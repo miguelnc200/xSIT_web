@@ -535,10 +535,11 @@
             ctx.fillStyle = 'white';
             ctx.fill();
 
+            // Semicircunferencia
             ctx.beginPath();
-            ctx.arc(canvasWidth/2, 206, 9, -Math.PI, 0);
+            ctx.arc(canvasWidth / 2, 195, 9, -Math.PI, 0); // de -π a 0
             ctx.strokeStyle = 'white';
-            ctx.lineWidth = 2;
+            ctx.stroke();
 
             // Draw elements if they exist
             if (ballPosition) {
