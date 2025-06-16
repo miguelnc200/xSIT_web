@@ -536,7 +536,9 @@
             ctx.fill();
 
             ctx.beginPath();
-            ctx.arc(canvasWidth/2, 137.5, 9, -Math.PI / 2, Math.PI / 2);
+            ctx.arc(canvasWidth/2, 206, 9, -Math.PI, 0);
+            ctx.strokeStyle = 'white';
+            ctx.lineWidth = 2;
 
             // Draw elements if they exist
             if (ballPosition) {
