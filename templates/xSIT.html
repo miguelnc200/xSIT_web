@@ -313,6 +313,8 @@
         <div class="xsit-result">
             <div class="xsit-label">Your xSIT result:</div>
             <div class="xsit-value" id="xsitValue">0.00</div>
+            <div class="xsit-label">Ball position:</div>
+            <div class="xsit-value" id="ballpos">(0.00,0.00)</div>
             <div class="explanation">
                 <h3>What is xSIT?</h3>
                 <p>xSIT (Expected Shot Interference Threat) is an advanced metric that calculates the probability of a shot being interfered with by defensive players. It is based on:</p>
@@ -335,6 +337,7 @@
         const gkStatus = document.getElementById('gkStatus');
         const playersStatus = document.getElementById('playersStatus');
         const xsitValue = document.getElementById('xsitValue');
+        const ballposition = document.getElementById('ballposition');
         const calculateBtn = document.getElementById('calculateBtn');
         const resetBtn = document.getElementById('resetBtn');
         const numPlayersInput = document.getElementById('numPlayers');
@@ -469,6 +472,10 @@
 
                 // Update UI with result
                 animateValue(0, result.xsit, 1500);
+                ballposition.textContent = <ul>
+                                              <li>Elemento 1: ballPosition.x</li>
+                                              <li>Elemento 2: ballPosition.y</li>
+                                            </ul>
             } catch (error) {
                 console.error('Error calculating xSIT:', error);
                 alert('Error connecting to backend. Make sure the server is running.');
