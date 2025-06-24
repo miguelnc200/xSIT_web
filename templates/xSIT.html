@@ -429,7 +429,7 @@
                 playersStatus.textContent += " - Ready to calculate!";
             }
             if (ballPosition) {
-            const formattedTuple = `(${ballPosition.x.toFixed(2)}, ${ballPosition.y.toFixed(2)})`;
+            const formattedTuple = `(${((canvasHeight / scaleY) - ballPosition.x).toFixed(2)}, ${((canvasWidth / scaleX) - ballPosition.y).toFixed(2)})`;
             ballpos.textContent = formattedTuple;
             ballpos.style.color = "#ffffff";
             } else {
