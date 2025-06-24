@@ -337,14 +337,14 @@
         const gkStatus = document.getElementById('gkStatus');
         const playersStatus = document.getElementById('playersStatus');
         const xsitValue = document.getElementById('xsitValue');
-        const ballposition = document.getElementById('ballposition');
-        if (ballposition) {
-        const formattedTuple = `(${ballposition.x.toFixed(2)}, ${ballposition.y.toFixed(2)})`;
-        ballposition.textContent = formattedTuple;
-        ballposition.style.color = "#ffffff";
+        const ballpos = document.getElementById('ballpos');
+        if (ballPosition) {
+        const formattedTuple = `(${ballPosition.x.toFixed(2)}, ${ballPosition.y.toFixed(2)})`;
+        ballpos.textContent = formattedTuple;
+        ballpos.style.color = "#ffffff";
         } else {
-            ballposition.textContent = "(0.00, 0.00)";
-            ballposition.style.color = "#888888";
+            ballpos.textContent = "(0.00, 0.00)";
+            ballpos.style.color = "#888888";
         }
         const calculateBtn = document.getElementById('calculateBtn');
         const resetBtn = document.getElementById('resetBtn');
