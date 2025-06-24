@@ -338,14 +338,6 @@
         const playersStatus = document.getElementById('playersStatus');
         const xsitValue = document.getElementById('xsitValue');
         const ballpos = document.getElementById('ballpos');
-        if (ballPosition) {
-        const formattedTuple = `(${ballPosition.x.toFixed(2)}, ${ballPosition.y.toFixed(2)})`;
-        ballpos.textContent = formattedTuple;
-        ballpos.style.color = "#ffffff";
-        } else {
-            ballpos.textContent = "(0.00, 0.00)";
-            ballpos.style.color = "#888888";
-        }
         const calculateBtn = document.getElementById('calculateBtn');
         const resetBtn = document.getElementById('resetBtn');
         const numPlayersInput = document.getElementById('numPlayers');
@@ -436,6 +428,15 @@
             if (state === 'ready') {
                 playersStatus.textContent += " - Ready to calculate!";
             }
+            if (ballPosition) {
+            const formattedTuple = `(${ballPosition.x.toFixed(2)}, ${ballPosition.y.toFixed(2)})`;
+            ballpos.textContent = formattedTuple;
+            ballpos.style.color = "#ffffff";
+            } else {
+                ballpos.textContent = "(0.00, 0.00)";
+                ballpos.style.color = "#888888";
+            }
+            ballStatus.style.color = ballPosition ? "#4CAF50" : "#F44336";
         }
 
         async function calculateXSIT() {
