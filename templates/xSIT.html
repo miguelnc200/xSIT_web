@@ -392,7 +392,7 @@
 
             switch(state) {
                 case 'ball':
-                    ballPosition = { x: fieldY, y: fieldX };
+                    ballPosition = { x: fieldX, y: fieldY };
                     state = 'goalkeeper';
                     break;
                 case 'goalkeeper':
@@ -549,7 +549,7 @@
 
             // Semicircunferencia
             ctx.beginPath();
-            ctx.arc(canvasWidth / 2, 206, 100 , 0, Math.PI ); // de -π a 0
+            ctx.arc(canvasWidth / 2, 137.5, 2 , 0, Math.PI ); // de -π a 0
             ctx.strokeStyle = 'white';
             ctx.stroke();
 
