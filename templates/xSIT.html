@@ -345,7 +345,7 @@
 
         // Field dimensions in meters
         const fieldHeight = 40;  // meters
-        const fieldWidth = 75;  // meters
+        const fieldWidth = 80;  // meters
 
         // Canvas dimensions in pixels
         const canvasWidth = canvas.width;
@@ -392,7 +392,7 @@
 
             switch(state) {
                 case 'ball':
-                    ballPosition = { x: fieldX, y: fieldY };
+                    ballPosition = { x: fieldY, y: fieldX };
                     state = 'goalkeeper';
                     break;
                 case 'goalkeeper':
@@ -429,7 +429,7 @@
                 playersStatus.textContent += " - Ready to calculate!";
             }
             if (ballPosition) {
-            const formattedTuple = `(${((canvasHeight / scaleY) - ballPosition.x).toFixed(2)}, ${((canvasWidth / scaleX) - ballPosition.y).toFixed(2)})`;
+            const formattedTuple = `(${((canvasWidth / scaleX) - ballPosition.y).toFixed(2)}, ${((canvasHeight / scaleY) - ballPosition.x).toFixed(2)})`;
             ballpos.textContent = formattedTuple;
             ballpos.style.color = "#ffffff";
             } else {
@@ -549,7 +549,7 @@
 
             // Semicircunferencia
             ctx.beginPath();
-            ctx.arc(canvasWidth / 2, 137.5, 2 , 5 * Math.PI / 4, 7 * Math.PI / 4 ); // de -π a 0
+            ctx.arc(canvasWidth / 2, 137.5, 100 , 5 * Math.PI / 4, 7 * Math.PI / 4 ); // de -π a 0
             ctx.strokeStyle = 'white';
             ctx.stroke();
 
