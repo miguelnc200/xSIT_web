@@ -21,15 +21,15 @@ def calcular_radio_efectivo(tiempo_llegada, radio_base, tiempo_reaccion):
 
 def calcular_xsit(pos_balon, portero, jugadores, velocidad_balon):
     fig, ax = plt.subplots(figsize=(10, 6), dpi=100)
-    ax.set_xlim(0, 120)
-    ax.set_ylim(0, 75)
+    ax.set_xlim(0, 105)
+    ax.set_ylim(0, 68)
     ax.set_xticks([])
     ax.set_yticks([])
     ax.set_frame_on(False)
     ax.set_facecolor('white')
 
     # Portería
-    porteria = [(120, 32), (120, 43)] if pos_balon[0] >= 60 else [(0, 32), (0, 43)]
+    porteria = [(105, 30.34), (105, 37.66)] if pos_balon[0] >= 60 else [(0, 30.34), (0, 37.66)]
 
     # Triángulo
     vertices_triangulo = np.array([pos_balon, porteria[0], porteria[1]])
